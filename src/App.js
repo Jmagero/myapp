@@ -1,21 +1,36 @@
+import React, { useState } from 'react';
 import './App.css';
-import { Button1 } from './Components/Button1';
-import { Button2 }from "./Components/Button2";
-import { Button3 } from "./Components/Button3";
-import { Button4 } from "./Components/Button4";
+import {Counter} from './Components/Counter'
+//import {Counter1} from './Components/Counter2'
+
 
 function App() {
+  const[ counter, setCounter] = useState(0);
+  const handleIncrement = (value) =>{
+     setCounter(counter + value);
+  }
+  const handleDecrement = (value) =>{
+     setCounter(counter - value);
+  }
   return (
-    <div className="App">
-      <td>
-        <tr><Button1 /></tr>
-        <tr><Button2 /></tr>
-      </td>
-      <td>
-        <tr><Button3/></tr>
-        <tr><Button4 /></tr>
-      </td>
-    </div>
+    <table>
+      <tr>
+        <th> <h1>{counter}</h1></th>
+      </tr>
+      <tr>
+        <Counter value={3} count={counter} increment={handleIncrement}
+        decrement={handleDecrement}/>
+        <Counter  value={1} count={counter} decrement={handleDecrement} 
+        increment={handleIncrement}/>
+      </tr>
+      <tr>
+        <Counter value={5} count={counter} increment={handleIncrement}
+        decrement={handleDecrement}/>
+        <Counter  value={8} count={counter} decrement={handleDecrement} 
+        increment={handleIncrement}/>
+      </tr>
+    
+    </table>
   );
 }
 
